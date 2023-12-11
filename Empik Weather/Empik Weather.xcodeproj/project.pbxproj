@@ -81,15 +81,8 @@
 			children = (
 				621C972A2B266BC600073292 /* Default */,
 				621C972F2B27BC7100073292 /* Extension */,
-				621C97232B2659EB00073292 /* CitiesListView */,
-				621C97222B2659DD00073292 /* DetailsScreen */,
-				621C97212B2659D000073292 /* SearchScreen */,
-				621C970C2B26563800073292 /* AppDelegate.swift */,
-				621C970E2B26563800073292 /* SceneDelegate.swift */,
-				621C97152B26563A00073292 /* Assets.xcassets */,
-				621C97172B26563A00073292 /* LaunchScreen.storyboard */,
+				621C97342B27C3F200073292 /* Presentation */,
 				621C971A2B26563A00073292 /* Info.plist */,
-				621C972D2B27BC2E00073292 /* Localizable.xcstrings */,
 			);
 			path = "Empik Weather";
 			sourceTree = "<group>";
@@ -122,6 +115,11 @@
 			isa = PBXGroup;
 			children = (
 				621C972B2B266BD000073292 /* Coordinator.swift */,
+				621C970C2B26563800073292 /* AppDelegate.swift */,
+				621C970E2B26563800073292 /* SceneDelegate.swift */,
+				621C97172B26563A00073292 /* LaunchScreen.storyboard */,
+				621C972D2B27BC2E00073292 /* Localizable.xcstrings */,
+				621C97152B26563A00073292 /* Assets.xcassets */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -132,6 +130,16 @@
 				621C97302B27BC8200073292 /* String+Localizable.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		621C97342B27C3F200073292 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				621C97232B2659EB00073292 /* CitiesListView */,
+				621C97222B2659DD00073292 /* DetailsScreen */,
+				621C97212B2659D000073292 /* SearchScreen */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		A574575CD4813497947C7AD1 /* Pods */ = {
