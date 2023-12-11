@@ -9,22 +9,18 @@ import UIKit
 
 protocol CoordinatorProtocol {
     var mainNavigationController: UINavigationController { get }
-    var rootViewController: UIViewController { get }
 }
 
 class Coordinator: CoordinatorProtocol {
-    var mainNavigationController: UINavigationController
-    var rootViewController: UIViewController {
-        searchViewController
-    }
-    
+    let mainNavigationController: UINavigationController
+
     let searchViewController: SearchViewController = {
         let viewModel = SearchViewModel()
-        let view = SearchView(searchViewModel: viewModel)
+        let view = SearchView(viewModel: viewModel)
         return SearchViewController(rootView: view)
     }()
     
-    init(mainNavigationController: UINavigationController = UINavigationController()) {
-        self.mainNavigationController = mainNavigationController
+    init() {
+        mainNavigationController = UINavigationController(rootViewController: searchViewController)
     }
 }

@@ -20,21 +20,17 @@ class SearchViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     override func loadView() {
         super.loadView()
         createView()
     }
-    
-    func createView() {
+}
+
+extension SearchViewController {
+    private func createView() {
         view.addSubview(rootView)
         rootView.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 }
-

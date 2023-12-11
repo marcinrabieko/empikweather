@@ -8,9 +8,12 @@
 import Foundation
 
 protocol SearchViewModelProtocol {
-    
+    func searchCity(for text: String)
 }
 
 class SearchViewModel {
     
+    func searchCity(for text: String) {
+        print(text)
+    }
 }
