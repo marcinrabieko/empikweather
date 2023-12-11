@@ -10,15 +10,28 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var appDelegate: AppDelegate? {
+        UIApplication.shared.delegate as? AppDelegate
+    }
 
+    var coordinator: Coordinator? {
+        appDelegate?.coordinator
+    }
+    
+    init(window: UIWindow? = UIWindow()) {
+        self.window = window
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        if let coordinator = coordinator {
+            setupScene(scene: scene, coordinator: coordinator)
+        }
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
@@ -29,6 +42,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        
+        window?.rootViewController = coordinator?.rootViewController
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -47,6 +62,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    private func setupScene(scene: UIScene, coordinator: Coordinator) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard window == nil else { return }
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = coordinator.mainNavigationController
+        window?.makeKeyAndVisible()
+    }
 }
 
