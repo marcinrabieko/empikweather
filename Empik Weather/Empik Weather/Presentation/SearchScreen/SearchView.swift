@@ -22,7 +22,16 @@ class SearchView: UIView {
         view.searchTextField.placeholder = "search_hint".localized
         return view
     }()
-
+    
+    private let tableView: UITableView = {
+        let view = UITableView(frame: .zero, style: .plain)
+        view.backgroundColor = .clear
+        view.separatorStyle = .none
+        view.keyboardDismissMode = .interactive
+        view.register(CityTableViewCell.self, forCellReuseIdentifier: "CityTableViewCell")
+        return view
+    }()
+    
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
@@ -35,15 +44,26 @@ class SearchView: UIView {
 }
 
 extension SearchView {
-    func configureUI() {
+    private func configureUI() {
         backgroundColor = .white
         addSubview(searchBar)
+        addSubview(tableView)
         searchBar.delegate = self
         
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         searchBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide)
             $0.leading.equalToSuperview().offset(20).priority(.low)
             $0.trailing.equalToSuperview().offset(-20).priority(.low)
+        }
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom).offset(-8)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(20)
+            $0.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 }

@@ -13,6 +13,10 @@ class City: Decodable {
     let country: Country
     let administrativeArea: AdministrativeArea
     
+    var details: String {
+        "\(administrativeArea.localizedName) (\(country.localizedName))"
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case key = "Key"
         case localizedName = "LocalizedName"
