@@ -23,7 +23,7 @@ extension AccuWeatherAPI: TargetType {
     var path: String {
         switch self {
         case .search:
-            return "/locations/v1/cities/search"
+            return "/locations/v1/cities/autocomplete"
         }
     }
 
@@ -38,7 +38,7 @@ extension AccuWeatherAPI: TargetType {
     var task: Task {
         switch self {
         case let .search(searchText):
-            let params = ["apiKey": AccuWeatherEnvironment.apiKey,
+            let params = ["apikey": AccuWeatherEnvironment.apiKey,
                           "language": AccuWeatherEnvironment.language,
                           "q": searchText]
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)

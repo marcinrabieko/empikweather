@@ -9,17 +9,17 @@ import Moya
 import RxSwift
 
 protocol AccuWeatherServiceProtocol {
-    
+    func searchCities(searchText: String) -> Single<[City]>
 }
 
 struct AccuWeatherService: AccuWeatherServiceProtocol {
 
     private let provider = MoyaProvider<AccuWeatherAPI>()
 
-    func searchCities(searchText: String) -> Single<String> {
+    func searchCities(searchText: String) -> Single<[City]> {
         provider.rx
             .request(.search(searchText: searchText))
             .filterSuccessfulStatusAndRedirectCodes()
-            .map(String.self)
+            .map([City].self)
     }
 }
