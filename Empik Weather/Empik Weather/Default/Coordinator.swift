@@ -12,15 +12,18 @@ protocol CoordinatorProtocol {
 }
 
 class Coordinator: CoordinatorProtocol {
+    let accuWeatherDomainManager: AccuWeatherDomainManager
+    
     let mainNavigationController: UINavigationController
-
-    let searchViewController: SearchViewController = {
-        let viewModel = SearchViewModel()
-        let view = SearchView(viewModel: viewModel)
-        return SearchViewController(rootView: view)
-    }()
+    let searchViewController: SearchViewController
     
     init() {
+        accuWeatherDomainManager = AccuWeatherDomainManager()
+        
+        // Configure root view controller
+        let rootViewModel = SearchViewModel(accuWeatherDomainManager: accuWeatherDomainManager)
+        let rootView = SearchView(viewModel: rootViewModel)
+        searchViewController = SearchViewController(rootView: rootView)
         mainNavigationController = UINavigationController(rootViewController: searchViewController)
     }
 }

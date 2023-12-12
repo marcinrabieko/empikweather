@@ -13,7 +13,14 @@ protocol SearchViewModelProtocol {
 
 class SearchViewModel {
     
+    private let accuWeatherDomainManager: AccuWeatherDomainManager
+    
+    init(accuWeatherDomainManager: AccuWeatherDomainManager) {
+        self.accuWeatherDomainManager = accuWeatherDomainManager
+    }
+    
     func searchCity(for text: String) {
-        print(text)
+        print("search text:", text)
+        accuWeatherDomainManager.searchCities(for: text)
     }
 }
