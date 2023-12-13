@@ -10,6 +10,10 @@ import UIKit
 class SearchView: UIView {
     let viewModel: SearchViewModel
     
+    private struct Constant {
+        static let regexPattern = "[a-zA-Z-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+"
+    }
+    
     private let searchBar: UISearchBar = {
         let view = UISearchBar()
         view.searchBarStyle = .minimal
@@ -91,4 +95,9 @@ extension SearchView: UISearchBarDelegate {
     func searchBar(_: UISearchBar, textDidChange searchText: String) {
         viewModel.searchCity(for: searchText)
     }
+    
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return text.validate(pattern: Constant.regexPattern)
+    }
+}
 }
