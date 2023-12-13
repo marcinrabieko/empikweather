@@ -10,16 +10,13 @@ import RxSwift
 import RxCocoa
 
 protocol DetailsViewModelProtocol {
-    var cities: BehaviorRelay<[City]> { get }
     var city: BehaviorRelay<City> { get }
     var disposeBag: DisposeBag { get }
     
-    func searchCity(for text: String)
-    func showCityWeather(city: City)
+    func fetchCityDetails()
 }
 
-class DetailsViewModel {
-
+class DetailsViewModel: DetailsViewModelProtocol {
     let cityDetails: BehaviorRelay<CityDetails?>
     let city: BehaviorRelay<City>
     let disposeBag = DisposeBag()
@@ -35,7 +32,7 @@ class DetailsViewModel {
 }
 
 extension DetailsViewModel {
-    private func fetchCityDetails() {
+    func fetchCityDetails() {
         print("details locationId:", city.value.locationId)
         accuWeatherDomainManager.details(locationId: city.value.locationId)
     }

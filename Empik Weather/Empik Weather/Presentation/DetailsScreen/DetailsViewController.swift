@@ -10,9 +10,11 @@ import UIKit
 class DetailsViewController: UIViewController {
 
     let rootView: DetailsView
+    let viewModel: DetailsViewModel
     
-    init(rootView: DetailsView) {
+    init(rootView: DetailsView, viewModel: DetailsViewModel) {
         self.rootView = rootView
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     

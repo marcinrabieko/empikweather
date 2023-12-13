@@ -12,6 +12,7 @@ protocol CoordinatorProtocol {
     var accuWeatherDomainManager: AccuWeatherDomainManager { get }
 
     func showDetails(city: City)
+    func refreshWeatherDetails()
 }
 
 class Coordinator: NSObject, CoordinatorProtocol {
@@ -42,6 +43,13 @@ extension Coordinator {
         let detailsViewController = detailsViewController(city: city)
         mainNavigationController?.pushViewController(detailsViewController, animated: true)
     }
+    
+    func refreshWeatherDetails() {
+        let detailsViewControllerOnTop =  (mainNavigationController?.topViewController as?  DetailsViewController) != nil
+        guard detailsViewControllerOnTop else { return }
+        guard let selectedCity = UserDefaults.standard.restoreSelectedCity() else { return }
+        accuWeatherDomainManager.details(locationId: selectedCity.locationId)
+    }
 }
 
 extension Coordinator {
@@ -54,7 +62,7 @@ extension Coordinator {
     private func detailsViewController(city: City) -> DetailsViewController {
         let viewModel = DetailsViewModel(accuWeatherDomainManager: accuWeatherDomainManager, city: city)
         let view = DetailsView(viewModel: viewModel)
-        return DetailsViewController(rootView: view)
+        return DetailsViewController(rootView: view, viewModel: viewModel)
     }
     
     private func navigationController() -> UINavigationController {

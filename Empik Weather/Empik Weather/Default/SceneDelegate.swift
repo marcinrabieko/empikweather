@@ -22,6 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             setupScene(scene: scene, coordinator: coordinator)
         }
     }
+    
+    func sceneDidBecomeActive(_: UIScene) {
+        coordinator?.refreshWeatherDetails()
+    }
 
     private func setupScene(scene: UIScene, coordinator: CoordinatorProtocol) {
         guard let windowScene = (scene as? UIWindowScene) else { return }

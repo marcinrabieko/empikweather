@@ -14,6 +14,7 @@ protocol AccuWeatherDomainManagerProtocol {
     var cityDetails: BehaviorRelay<CityDetails?> { get }
     
     func autocompleteCities(for text: String)
+    func details(locationId: String)
 }
 
 class AccuWeatherDomainManager: AccuWeatherDomainManagerProtocol {
