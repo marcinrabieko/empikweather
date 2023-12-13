@@ -11,7 +11,7 @@ protocol CoordinatorProtocol {
     var mainNavigationController: UINavigationController? { get }
     var accuWeatherDomainManager: AccuWeatherDomainManager { get }
 
-    func showDetails(locationId: String)
+    func showDetails(city: City)
 }
 
 class Coordinator: NSObject, CoordinatorProtocol {
@@ -30,8 +30,8 @@ class Coordinator: NSObject, CoordinatorProtocol {
 }
 
 extension Coordinator {
-    func showDetails(locationId: String) {
-        let viewModel = DetailsViewModel(accuWeatherDomainManager: accuWeatherDomainManager, locationId: locationId)
+    func showDetails(city: City) {
+        let viewModel = DetailsViewModel(accuWeatherDomainManager: accuWeatherDomainManager, city: city)
         let view = DetailsView(viewModel: viewModel)
         detailsViewController = DetailsViewController(rootView: view)
         guard let detailsViewController else { return }

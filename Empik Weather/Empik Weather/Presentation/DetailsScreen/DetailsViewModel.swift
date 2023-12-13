@@ -11,6 +11,7 @@ import RxCocoa
 
 protocol DetailsViewModelProtocol {
     var cities: BehaviorRelay<[City]> { get }
+    var city: BehaviorRelay<City> { get }
     var disposeBag: DisposeBag { get }
     
     func searchCity(for text: String)
@@ -20,22 +21,22 @@ protocol DetailsViewModelProtocol {
 class DetailsViewModel {
 
     let cityDetails: BehaviorRelay<CityDetails?>
+    let city: BehaviorRelay<City>
     let disposeBag = DisposeBag()
     
     private let accuWeatherDomainManager: AccuWeatherDomainManager
     
-    init(accuWeatherDomainManager: AccuWeatherDomainManager, locationId: String) {
+    init(accuWeatherDomainManager: AccuWeatherDomainManager, city: City) {
         self.accuWeatherDomainManager = accuWeatherDomainManager
+        self.city = BehaviorRelay<City>(value: city)
         cityDetails = accuWeatherDomainManager.cityDetails
-        
-        // Fetch city details, initially
-        cityDetails(for: locationId)
+        fetchCityDetails()
     }
 }
 
 extension DetailsViewModel {
-    private func cityDetails(for locationId: String) {
-        print("details locationId:", locationId)
-        accuWeatherDomainManager.details(locationId: locationId)
+    private func fetchCityDetails() {
+        print("details locationId:", city.value.locationId)
+        accuWeatherDomainManager.details(locationId: city.value.locationId)
     }
 }

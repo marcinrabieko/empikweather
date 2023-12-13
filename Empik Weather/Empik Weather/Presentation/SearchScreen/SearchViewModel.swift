@@ -37,8 +37,7 @@ extension SearchViewModel {
     }
     
     func showCityWeather(city: City) {
-        print("show city weather:", city.localizedName, " locationKey:", city.key)
-        let locationId = city.key
-        coordinator.showDetails(locationId: locationId)
+        print("show city weather:", city.localizedName, " locationKey:", city.locationId)
+        coordinator.showDetails(city: city)
     }
 }

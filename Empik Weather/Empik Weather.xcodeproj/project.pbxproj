@@ -30,6 +30,7 @@
 		621C97522B2A486B00073292 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97512B2A486B00073292 /* DetailsView.swift */; };
 		621C97542B2A487800073292 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97532B2A487800073292 /* DetailsViewController.swift */; };
 		621C97562B2A488100073292 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97552B2A488100073292 /* DetailsViewModel.swift */; };
+		621C97582B2A636800073292 /* Double+Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97572B2A636800073292 /* Double+Temperature.swift */; };
 		988942953795CC4866575145 /* Pods_Empik_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC138BCD4D18B62D925C8C8C /* Pods_Empik_Weather.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		621C97512B2A486B00073292 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		621C97532B2A487800073292 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		621C97552B2A488100073292 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		621C97572B2A636800073292 /* Double+Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Temperature.swift"; sourceTree = "<group>"; };
 		B348DB8AEACD06B3E8304FC4 /* Pods-Empik Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Empik Weather.release.xcconfig"; path = "Target Support Files/Pods-Empik Weather/Pods-Empik Weather.release.xcconfig"; sourceTree = "<group>"; };
 		CC138BCD4D18B62D925C8C8C /* Pods_Empik_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Empik_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF187CB648B6DDEEBF63285 /* Pods-Empik Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Empik Weather.debug.xcconfig"; path = "Target Support Files/Pods-Empik Weather/Pods-Empik Weather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,13 +138,6 @@
 			path = DetailsScreen;
 			sourceTree = "<group>";
 		};
-		621C97232B2659EB00073292 /* CitiesListView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CitiesListView;
-			sourceTree = "<group>";
-		};
 		621C972A2B266BC600073292 /* Default */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +156,7 @@
 			children = (
 				621C97302B27BC8200073292 /* String+Localizable.swift */,
 				621C97452B28FD3300073292 /* String+Dictionary.swift */,
+				621C97572B2A636800073292 /* Double+Temperature.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -168,7 +164,6 @@
 		621C97342B27C3F200073292 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				621C97232B2659EB00073292 /* CitiesListView */,
 				621C97222B2659DD00073292 /* DetailsScreen */,
 				621C97212B2659D000073292 /* SearchScreen */,
 			);
@@ -352,6 +347,7 @@
 				621C973F2B28F67800073292 /* AccuWeatherEnvironment.swift in Sources */,
 				621C973D2B28F38F00073292 /* AccuWeatherAPI.swift in Sources */,
 				621C97502B2A42C000073292 /* CityDetails.swift in Sources */,
+				621C97582B2A636800073292 /* Double+Temperature.swift in Sources */,
 				621C970F2B26563800073292 /* SceneDelegate.swift in Sources */,
 				621C97462B28FD3300073292 /* String+Dictionary.swift in Sources */,
 				621C974B2B29050A00073292 /* City.swift in Sources */,

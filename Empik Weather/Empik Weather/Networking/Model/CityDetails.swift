@@ -12,10 +12,6 @@ class CityDetails: Decodable {
     let weatherText: String
     let temperature: Temperature
     
-    var formattedTemperature: String {
-        String(temperature.metric.value)
-    }
-    
     private enum CodingKeys: String, CodingKey {
         case weatherText = "WeatherText"
         case temperature = "Temperature"

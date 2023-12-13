@@ -8,7 +8,7 @@
 import Foundation
 
 class City: Decodable {
-    let key: String
+    let locationId: String
     let localizedName: String
     let country: Country
     let administrativeArea: AdministrativeArea
@@ -18,7 +18,7 @@ class City: Decodable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case key = "Key"
+        case locationId = "Key"
         case localizedName = "LocalizedName"
         case country = "Country"
         case administrativeArea = "AdministrativeArea"
