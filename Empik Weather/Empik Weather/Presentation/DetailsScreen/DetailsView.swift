@@ -14,6 +14,7 @@ class DetailsView: UIView {
         let view = UILabel()
         view.textColor = .gray
         view.font = .systemFont(ofSize: 30, weight: .medium)
+        view.numberOfLines = 0
         return view
     }()
     
@@ -21,6 +22,7 @@ class DetailsView: UIView {
         let view = UILabel()
         view.textColor = .lightGray
         view.font = .systemFont(ofSize: 16, weight: .thin)
+        view.numberOfLines = 0
         return view
     }()
     

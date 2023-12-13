@@ -22,7 +22,6 @@
 		621C973D2B28F38F00073292 /* AccuWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C973C2B28F38F00073292 /* AccuWeatherAPI.swift */; };
 		621C973F2B28F67800073292 /* AccuWeatherEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C973E2B28F67800073292 /* AccuWeatherEnvironment.swift */; };
 		621C97412B28F98900073292 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97402B28F98900073292 /* SearchModel.swift */; };
-		621C97462B28FD3300073292 /* String+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97452B28FD3300073292 /* String+Dictionary.swift */; };
 		621C97492B29014300073292 /* AccuWeatherDomainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97482B29014300073292 /* AccuWeatherDomainManager.swift */; };
 		621C974B2B29050A00073292 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C974A2B29050A00073292 /* City.swift */; };
 		621C974D2B2909C100073292 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C974C2B2909C100073292 /* CityTableViewCell.swift */; };
@@ -31,6 +30,7 @@
 		621C97542B2A487800073292 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97532B2A487800073292 /* DetailsViewController.swift */; };
 		621C97562B2A488100073292 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97552B2A488100073292 /* DetailsViewModel.swift */; };
 		621C97582B2A636800073292 /* Double+Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97572B2A636800073292 /* Double+Temperature.swift */; };
+		621C975A2B2A67ED00073292 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97592B2A67ED00073292 /* String+Validation.swift */; };
 		988942953795CC4866575145 /* Pods_Empik_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC138BCD4D18B62D925C8C8C /* Pods_Empik_Weather.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +52,6 @@
 		621C973C2B28F38F00073292 /* AccuWeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccuWeatherAPI.swift; sourceTree = "<group>"; };
 		621C973E2B28F67800073292 /* AccuWeatherEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccuWeatherEnvironment.swift; sourceTree = "<group>"; };
 		621C97402B28F98900073292 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
-		621C97452B28FD3300073292 /* String+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Dictionary.swift"; sourceTree = "<group>"; };
 		621C97482B29014300073292 /* AccuWeatherDomainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccuWeatherDomainManager.swift; sourceTree = "<group>"; };
 		621C974A2B29050A00073292 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		621C974C2B2909C100073292 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		621C97532B2A487800073292 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		621C97552B2A488100073292 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		621C97572B2A636800073292 /* Double+Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Temperature.swift"; sourceTree = "<group>"; };
+		621C97592B2A67ED00073292 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		B348DB8AEACD06B3E8304FC4 /* Pods-Empik Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Empik Weather.release.xcconfig"; path = "Target Support Files/Pods-Empik Weather/Pods-Empik Weather.release.xcconfig"; sourceTree = "<group>"; };
 		CC138BCD4D18B62D925C8C8C /* Pods_Empik_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Empik_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF187CB648B6DDEEBF63285 /* Pods-Empik Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Empik Weather.debug.xcconfig"; path = "Target Support Files/Pods-Empik Weather/Pods-Empik Weather.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				621C97302B27BC8200073292 /* String+Localizable.swift */,
-				621C97452B28FD3300073292 /* String+Dictionary.swift */,
 				621C97572B2A636800073292 /* Double+Temperature.swift */,
+				621C97592B2A67ED00073292 /* String+Validation.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -333,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				621C97292B265B6100073292 /* SearchViewModel.swift in Sources */,
+				621C975A2B2A67ED00073292 /* String+Validation.swift in Sources */,
 				621C97522B2A486B00073292 /* DetailsView.swift in Sources */,
 				621C974D2B2909C100073292 /* CityTableViewCell.swift in Sources */,
 				621C97392B28F11900073292 /* AccuWeatherService.swift in Sources */,
@@ -349,7 +350,6 @@
 				621C97502B2A42C000073292 /* CityDetails.swift in Sources */,
 				621C97582B2A636800073292 /* Double+Temperature.swift in Sources */,
 				621C970F2B26563800073292 /* SceneDelegate.swift in Sources */,
-				621C97462B28FD3300073292 /* String+Dictionary.swift in Sources */,
 				621C974B2B29050A00073292 /* City.swift in Sources */,
 				621C97312B27BC8200073292 /* String+Localizable.swift in Sources */,
 				621C97542B2A487800073292 /* DetailsViewController.swift in Sources */,
