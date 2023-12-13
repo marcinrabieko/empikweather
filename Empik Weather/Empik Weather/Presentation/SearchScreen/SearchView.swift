@@ -100,4 +100,3 @@ extension SearchView: UISearchBarDelegate {
         return text.validate(pattern: Constant.regexPattern)
     }
 }
-}
