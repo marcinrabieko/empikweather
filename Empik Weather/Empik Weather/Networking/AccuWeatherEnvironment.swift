@@ -8,7 +8,7 @@
 import Foundation
 
 struct AccuWeatherEnvironment {
-    static let apiKey = "nt2zAdA8GU9GuytqLhHAOUE7goLS7gZr"
+    static let apiKey = "79tTez7sCnGfQbdk5PFSDD8xce98p1qi"
     static let baseURL = URL(string: baseURLString)
     static let language = "pl-pl"
     

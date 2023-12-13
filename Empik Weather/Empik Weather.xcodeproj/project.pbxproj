@@ -176,11 +176,11 @@
 		621C97352B27C4AD00073292 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				621C975D2B2A757600073292 /* Moya */,
 				621C97422B28FA0E00073292 /* Model */,
 				621C973E2B28F67800073292 /* AccuWeatherEnvironment.swift */,
-				621C97362B28EE4D00073292 /* MoyaProvider+Init.swift */,
-				621C97382B28F11900073292 /* AccuWeatherService.swift */,
 				621C973C2B28F38F00073292 /* AccuWeatherAPI.swift */,
+				621C97382B28F11900073292 /* AccuWeatherService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -188,9 +188,9 @@
 		621C97422B28FA0E00073292 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				621C97402B28F98900073292 /* SearchModel.swift */,
 				621C974A2B29050A00073292 /* City.swift */,
 				621C974F2B2A42C000073292 /* CityDetails.swift */,
+				621C97402B28F98900073292 /* SearchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,6 +209,14 @@
 				621C974C2B2909C100073292 /* CityTableViewCell.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		621C975D2B2A757600073292 /* Moya */ = {
+			isa = PBXGroup;
+			children = (
+				621C97362B28EE4D00073292 /* MoyaProvider+Init.swift */,
+			);
+			path = Moya;
 			sourceTree = "<group>";
 		};
 		A574575CD4813497947C7AD1 /* Pods */ = {
