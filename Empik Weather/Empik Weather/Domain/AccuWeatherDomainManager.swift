@@ -7,16 +7,28 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
-class AccuWeatherDomainManager {
-    let service = AccuWeatherService()
-    let disposeBag = DisposeBag()
+protocol AccuWeatherDomainManagerProtocol {
+    var cities: BehaviorRelay<[City]> { get }
     
-    func searchCities(for text: String) {
+    func autocompleteCities(for text: String)
+}
+
+class AccuWeatherDomainManager: AccuWeatherDomainManagerProtocol {
+    
+    let cities: BehaviorRelay<[City]> = BehaviorRelay<[City]>(value: [])
+
+    private let disposeBag = DisposeBag()
+    private let service = AccuWeatherService()
+    
+    func autocompleteCities(for text: String) {
         service.searchCities(searchText: text)
-            .subscribe { cities in
-                print(cities)
-            }
+            .subscribe(onSuccess: { [weak self] cities in
+                self?.cities.accept(cities)
+            }, onFailure: { [weak self] _ in
+                self?.cities.accept([])
+            })
             .disposed(by: disposeBag)
     }
 }

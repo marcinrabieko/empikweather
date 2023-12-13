@@ -43,9 +43,9 @@ extension CityTableViewCell {
 
 extension CityTableViewCell {
     private func setupUI() {
-        backgroundColor = .lightGray
+        backgroundColor = .init(white: 0, alpha: 0.05)
         let selectedView = UIView()
-        selectedView.backgroundColor = .darkGray
+        selectedView.backgroundColor = .init(white: 0, alpha: 0.1)
         selectedBackgroundView = selectedView
         contentView.addSubview(nameLabel)
         contentView.addSubview(detailsLabel)

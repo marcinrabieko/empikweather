@@ -15,7 +15,7 @@ class SearchView: UIView {
         view.searchBarStyle = .minimal
         view.barStyle = .default
         view.searchTextField.leftView?.tintColor = .systemBlue
-        view.searchTextField.backgroundColor = .lightGray
+        view.searchTextField.backgroundColor = .init(white: 1, alpha: 0.1)
         view.searchTextField.textColor = .darkGray
         view.returnKeyType = .done
         view.enablesReturnKeyAutomatically = false
@@ -62,9 +62,23 @@ extension SearchView {
         tableView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(-8)
             $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
             $0.bottom.equalTo(safeAreaLayoutGuide)
         }
+    }
+    
+    private func bindUI() {
+        viewModel.cities
+            .bind(to: tableView.rx.items(cellIdentifier: "CityTableViewCell",
+                                         cellType: CityTableViewCell.self)) { _, model, cell in
+                cell.configure(city: model)
+            }.disposed(by: viewModel.disposeBag)
+        
+        tableView.rx.modelSelected(City.self)
+            .subscribe(onNext: { [weak self] city in
+                self?.searchBar.resignFirstResponder()
+                self?.viewModel.showCityWeather(city: city)
+            }).disposed(by: viewModel.disposeBag)
     }
 }
 
