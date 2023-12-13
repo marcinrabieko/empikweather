@@ -7,7 +7,7 @@
 
 import Foundation
 
-class City: Decodable {
+class City: Codable {
     let locationId: String
     let localizedName: String
     let country: Country
@@ -25,7 +25,7 @@ class City: Decodable {
     }
 }
 
-class Country: Decodable {
+class Country: Codable {
     let localizedName: String
     
     private enum CodingKeys: String, CodingKey {
@@ -33,7 +33,7 @@ class Country: Decodable {
     }
 }
 
-class AdministrativeArea: Decodable {
+class AdministrativeArea: Codable {
     let localizedName: String
 
     private enum CodingKeys: String, CodingKey {

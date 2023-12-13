@@ -18,7 +18,10 @@ class Coordinator: NSObject, CoordinatorProtocol {
 
     let accuWeatherDomainManager: AccuWeatherDomainManager
     var mainNavigationController: UINavigationController?
-    var detailsViewController: DetailsViewController?
+    
+    private var rootViewController: UIViewController {
+        searchViewController()
+    }
     
     override init() {
         accuWeatherDomainManager = AccuWeatherDomainManager()
@@ -26,32 +29,36 @@ class Coordinator: NSObject, CoordinatorProtocol {
         
         // Configure root controller
         mainNavigationController = navigationController()
+        
+        // Restore and display details of previously selected city
+        if let selectedCity = UserDefaults.standard.restoreSelectedCity() {
+            showDetails(city: selectedCity)
+        }
     }
 }
 
 extension Coordinator {
     func showDetails(city: City) {
-        let viewModel = DetailsViewModel(accuWeatherDomainManager: accuWeatherDomainManager, city: city)
-        let view = DetailsView(viewModel: viewModel)
-        detailsViewController = DetailsViewController(rootView: view)
-        guard let detailsViewController else { return }
+        let detailsViewController = detailsViewController(city: city)
         mainNavigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
 
 extension Coordinator {
     private func searchViewController() -> SearchViewController {
-        let rootViewModel = SearchViewModel(coordinator: self)
-        let rootView = SearchView(viewModel: rootViewModel)
-        return SearchViewController(rootView: rootView)
+        let viewModel = SearchViewModel(coordinator: self)
+        let view = SearchView(viewModel: viewModel)
+        return SearchViewController(rootView: view)
+    }
+    
+    private func detailsViewController(city: City) -> DetailsViewController {
+        let viewModel = DetailsViewModel(accuWeatherDomainManager: accuWeatherDomainManager, city: city)
+        let view = DetailsView(viewModel: viewModel)
+        return DetailsViewController(rootView: view)
     }
     
     private func navigationController() -> UINavigationController {
-        let rootViewController = rootViewController()
+        let rootViewController = rootViewController
         return UINavigationController(rootViewController: rootViewController)
-    }
-    
-    private func rootViewController() -> UIViewController {
-        searchViewController()
     }
 }
