@@ -9,13 +9,14 @@ import Moya
 
 enum AccuWeatherAPI {
     case search(searchText: String)
+    case details(locationId: String)
 }
 
 extension AccuWeatherAPI: TargetType {
 
     var baseURL: URL {
         switch self {
-        case .search:
+        case .search, .details:
             return AccuWeatherEnvironment.baseURL ?? URL(fileURLWithPath: "")
         }
     }
@@ -24,6 +25,8 @@ extension AccuWeatherAPI: TargetType {
         switch self {
         case .search:
             return "/locations/v1/cities/autocomplete"
+        case let .details(locationId):
+            return "/currentconditions/v1/\(locationId)"
         }
     }
 
@@ -42,6 +45,8 @@ extension AccuWeatherAPI: TargetType {
                           "language": AccuWeatherEnvironment.language,
                           "q": searchText]
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+        case .details:
+            return .requestPlain
         }
     }
 

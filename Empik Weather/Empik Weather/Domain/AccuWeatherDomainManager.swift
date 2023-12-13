@@ -11,6 +11,7 @@ import RxCocoa
 
 protocol AccuWeatherDomainManagerProtocol {
     var cities: BehaviorRelay<[City]> { get }
+    var cityDetails: BehaviorRelay<CityDetails?> { get }
     
     func autocompleteCities(for text: String)
 }
@@ -18,6 +19,7 @@ protocol AccuWeatherDomainManagerProtocol {
 class AccuWeatherDomainManager: AccuWeatherDomainManagerProtocol {
     
     let cities: BehaviorRelay<[City]> = BehaviorRelay<[City]>(value: [])
+    let cityDetails: BehaviorRelay<CityDetails?> = BehaviorRelay<CityDetails?>(value: nil)
 
     private let disposeBag = DisposeBag()
     private let service = AccuWeatherService()
@@ -29,6 +31,14 @@ class AccuWeatherDomainManager: AccuWeatherDomainManagerProtocol {
             }, onFailure: { [weak self] _ in
                 self?.cities.accept([])
             })
+            .disposed(by: disposeBag)
+    }
+    
+    func details(locationId: String) {
+        service.details(locationId: locationId)
+            .subscribe { [weak self] cityDetails in
+                self?.cityDetails.accept(cityDetails)
+            }
             .disposed(by: disposeBag)
     }
 }

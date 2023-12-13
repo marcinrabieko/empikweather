@@ -51,6 +51,7 @@ extension SearchView {
         searchBar.delegate = self
         
         setupConstraints()
+        bindUI()
     }
     
     private func setupConstraints() {
@@ -60,7 +61,7 @@ extension SearchView {
             $0.trailing.equalToSuperview().offset(-20).priority(.low)
         }
         tableView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom).offset(-8)
+            $0.top.equalTo(searchBar.snp.bottom)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
             $0.bottom.equalTo(safeAreaLayoutGuide)

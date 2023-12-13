@@ -1,17 +1,17 @@
 //
-//  ViewController.swift
+//  DetailsViewController.swift
 //  Empik Weather
 //
-//  Created by Marcin Rabieko on 10/12/2023.
+//  Created by Marcin Rabieko on 13/12/2023.
 //
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class DetailsViewController: UIViewController {
 
-    let rootView: SearchView
+    let rootView: DetailsView
     
-    init(rootView: SearchView) {
+    init(rootView: DetailsView) {
         self.rootView = rootView
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,7 +26,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController {
+extension DetailsViewController {
     private func createView() {
         view.addSubview(rootView)
         rootView.snp.makeConstraints {

@@ -19,7 +19,16 @@ struct AccuWeatherService: AccuWeatherServiceProtocol {
     func searchCities(searchText: String) -> Single<[City]> {
         provider.rx
             .request(.search(searchText: searchText))
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .filterSuccessfulStatusAndRedirectCodes()
             .map([City].self)
+    }
+    
+    func details(locationId: String) -> Single<CityDetails> {
+        provider.rx
+            .request(.details(locationId: locationId))
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .filterSuccessfulStatusAndRedirectCodes()
+            .map(CityDetails.self)
     }
 }

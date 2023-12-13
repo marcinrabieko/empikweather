@@ -9,6 +9,8 @@ import UIKit
 
 protocol CoordinatorProtocol {
     var mainNavigationController: UINavigationController { get }
+    
+    func showDetails(locationId: String)
 }
 
 class Coordinator: CoordinatorProtocol {
@@ -16,6 +18,7 @@ class Coordinator: CoordinatorProtocol {
     
     let mainNavigationController: UINavigationController
     let searchViewController: SearchViewController
+    var detailsViewController: DetailsViewController?
     
     init() {
         accuWeatherDomainManager = AccuWeatherDomainManager()
@@ -25,5 +28,15 @@ class Coordinator: CoordinatorProtocol {
         let rootView = SearchView(viewModel: rootViewModel)
         searchViewController = SearchViewController(rootView: rootView)
         mainNavigationController = UINavigationController(rootViewController: searchViewController)
+    }
+}
+
+extension Coordinator {
+    func showDetails(locationId: String) {
+        let viewModel = DetailsViewModel(accuWeatherDomainManager: accuWeatherDomainManager, locationId: locationId)
+        let view = DetailsView(viewModel: viewModel)
+        detailsViewController = DetailsViewController(rootView: view)
+        guard let detailsViewController else { return }
+        mainNavigationController.pushViewController(detailsViewController, animated: true)
     }
 }

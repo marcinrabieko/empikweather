@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var appDelegate: AppDelegate? {
         UIApplication.shared.delegate as? AppDelegate
     }
-    var coordinator: Coordinator? {
+    var coordinator: CoordinatorProtocol? {
         appDelegate?.coordinator
     }
 
@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    private func setupScene(scene: UIScene, coordinator: Coordinator) {
+    private func setupScene(scene: UIScene, coordinator: CoordinatorProtocol) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = coordinator.mainNavigationController
