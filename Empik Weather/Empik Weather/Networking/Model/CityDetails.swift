@@ -8,19 +8,32 @@
 import Foundation
 
 class CityDetails: Decodable {
-    let key: String
-    let localizedName: String
-    let country: Country
-    let administrativeArea: AdministrativeArea
     
-    var details: String {
-        "\(administrativeArea.localizedName) (\(country.localizedName))"
+    let weatherText: String
+    let temperature: Temperature
+    
+    var formattedTemperature: String {
+        String(temperature.metric.value)
     }
     
     private enum CodingKeys: String, CodingKey {
-        case key = "Key"
-        case localizedName = "LocalizedName"
-        case country = "Country"
-        case administrativeArea = "AdministrativeArea"
+        case weatherText = "WeatherText"
+        case temperature = "Temperature"
+    }
+}
+
+class Temperature: Decodable {
+    let metric: Metric
+    
+    private enum CodingKeys: String, CodingKey {
+        case metric = "Metric"
+    }
+}
+
+class Metric: Decodable {
+    let value: Double
+    
+    private enum CodingKeys: String, CodingKey {
+        case value = "Value"
     }
 }

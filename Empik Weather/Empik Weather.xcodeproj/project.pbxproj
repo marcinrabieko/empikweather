@@ -22,7 +22,6 @@
 		621C973D2B28F38F00073292 /* AccuWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C973C2B28F38F00073292 /* AccuWeatherAPI.swift */; };
 		621C973F2B28F67800073292 /* AccuWeatherEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C973E2B28F67800073292 /* AccuWeatherEnvironment.swift */; };
 		621C97412B28F98900073292 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97402B28F98900073292 /* SearchModel.swift */; };
-		621C97442B28FA3200073292 /* CommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97432B28FA3200073292 /* CommonModel.swift */; };
 		621C97462B28FD3300073292 /* String+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97452B28FD3300073292 /* String+Dictionary.swift */; };
 		621C97492B29014300073292 /* AccuWeatherDomainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C97482B29014300073292 /* AccuWeatherDomainManager.swift */; };
 		621C974B2B29050A00073292 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C974A2B29050A00073292 /* City.swift */; };
@@ -52,7 +51,6 @@
 		621C973C2B28F38F00073292 /* AccuWeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccuWeatherAPI.swift; sourceTree = "<group>"; };
 		621C973E2B28F67800073292 /* AccuWeatherEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccuWeatherEnvironment.swift; sourceTree = "<group>"; };
 		621C97402B28F98900073292 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
-		621C97432B28FA3200073292 /* CommonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModel.swift; sourceTree = "<group>"; };
 		621C97452B28FD3300073292 /* String+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Dictionary.swift"; sourceTree = "<group>"; };
 		621C97482B29014300073292 /* AccuWeatherDomainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccuWeatherDomainManager.swift; sourceTree = "<group>"; };
 		621C974A2B29050A00073292 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				621C97402B28F98900073292 /* SearchModel.swift */,
-				621C97432B28FA3200073292 /* CommonModel.swift */,
 				621C974A2B29050A00073292 /* City.swift */,
 				621C974F2B2A42C000073292 /* CityDetails.swift */,
 			);
@@ -342,7 +339,6 @@
 			files = (
 				621C97292B265B6100073292 /* SearchViewModel.swift in Sources */,
 				621C97522B2A486B00073292 /* DetailsView.swift in Sources */,
-				621C97442B28FA3200073292 /* CommonModel.swift in Sources */,
 				621C974D2B2909C100073292 /* CityTableViewCell.swift in Sources */,
 				621C97392B28F11900073292 /* AccuWeatherService.swift in Sources */,
 				621C97272B265B5800073292 /* SearchView.swift in Sources */,

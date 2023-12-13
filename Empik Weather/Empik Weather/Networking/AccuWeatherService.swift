@@ -10,6 +10,7 @@ import RxSwift
 
 protocol AccuWeatherServiceProtocol {
     func searchCities(searchText: String) -> Single<[City]>
+    func details(locationId: String) -> Single<[CityDetails]>
 }
 
 struct AccuWeatherService: AccuWeatherServiceProtocol {
@@ -24,11 +25,11 @@ struct AccuWeatherService: AccuWeatherServiceProtocol {
             .map([City].self)
     }
     
-    func details(locationId: String) -> Single<CityDetails> {
+    func details(locationId: String) -> Single<[CityDetails]> {
         provider.rx
             .request(.details(locationId: locationId))
             .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .filterSuccessfulStatusAndRedirectCodes()
-            .map(CityDetails.self)
+            .map([CityDetails].self)
     }
 }

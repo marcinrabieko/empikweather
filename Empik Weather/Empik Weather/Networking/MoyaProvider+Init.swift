@@ -14,6 +14,13 @@ extension MoyaProvider {
         configuration.httpMaximumConnectionsPerHost = 30
         configuration.timeoutIntervalForRequest = 30
         let session = Session(configuration: configuration, startRequestsImmediately: false)
-        self.init(session: session, plugins: [NetworkLoggerPlugin.default].compactMap { $0 })
+        self.init(session: session, plugins: [NetworkLoggerPlugin()].compactMap { $0 })
+    }
+}
+
+extension NetworkLoggerPlugin {
+    convenience init() {
+        let configuration = NetworkLoggerPlugin.Configuration(logOptions: [.requestMethod, .requestBody, .successResponseBody, .errorResponseBody])
+        self.init(configuration: configuration)
     }
 }

@@ -24,9 +24,9 @@ extension AccuWeatherAPI: TargetType {
     var path: String {
         switch self {
         case .search:
-            return "/locations/v1/cities/autocomplete"
+            return "locations/v1/cities/autocomplete"
         case let .details(locationId):
-            return "/currentconditions/v1/\(locationId)"
+            return "currentconditions/v1/\(locationId)"
         }
     }
 
@@ -39,18 +39,22 @@ extension AccuWeatherAPI: TargetType {
     }
 
     var task: Task {
+        var params = authParams
+        
         switch self {
         case let .search(searchText):
-            let params = ["apikey": AccuWeatherEnvironment.apiKey,
-                          "language": AccuWeatherEnvironment.language,
-                          "q": searchText]
-            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
-        case .details:
-            return .requestPlain
+            params["q"] = searchText
+        default: ()
         }
+        return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
     }
 
     var headers: [String: String]? {
         return nil
+    }
+    
+    private var authParams: Dictionary<String, Any> {
+        ["apikey": AccuWeatherEnvironment.apiKey,
+         "language": AccuWeatherEnvironment.language]
     }
 }

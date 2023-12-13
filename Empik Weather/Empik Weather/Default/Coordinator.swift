@@ -8,26 +8,24 @@
 import UIKit
 
 protocol CoordinatorProtocol {
-    var mainNavigationController: UINavigationController { get }
-    
+    var mainNavigationController: UINavigationController? { get }
+    var accuWeatherDomainManager: AccuWeatherDomainManager { get }
+
     func showDetails(locationId: String)
 }
 
-class Coordinator: CoordinatorProtocol {
+class Coordinator: NSObject, CoordinatorProtocol {
+
     let accuWeatherDomainManager: AccuWeatherDomainManager
-    
-    let mainNavigationController: UINavigationController
-    let searchViewController: SearchViewController
+    var mainNavigationController: UINavigationController?
     var detailsViewController: DetailsViewController?
     
-    init() {
+    override init() {
         accuWeatherDomainManager = AccuWeatherDomainManager()
+        super.init()
         
-        // Configure root view controller
-        let rootViewModel = SearchViewModel(accuWeatherDomainManager: accuWeatherDomainManager)
-        let rootView = SearchView(viewModel: rootViewModel)
-        searchViewController = SearchViewController(rootView: rootView)
-        mainNavigationController = UINavigationController(rootViewController: searchViewController)
+        // Configure root controller
+        mainNavigationController = navigationController()
     }
 }
 
@@ -37,6 +35,23 @@ extension Coordinator {
         let view = DetailsView(viewModel: viewModel)
         detailsViewController = DetailsViewController(rootView: view)
         guard let detailsViewController else { return }
-        mainNavigationController.pushViewController(detailsViewController, animated: true)
+        mainNavigationController?.pushViewController(detailsViewController, animated: true)
+    }
+}
+
+extension Coordinator {
+    private func searchViewController() -> SearchViewController {
+        let rootViewModel = SearchViewModel(coordinator: self)
+        let rootView = SearchView(viewModel: rootViewModel)
+        return SearchViewController(rootView: rootView)
+    }
+    
+    private func navigationController() -> UINavigationController {
+        let rootViewController = rootViewController()
+        return UINavigationController(rootViewController: rootViewController)
+    }
+    
+    private func rootViewController() -> UIViewController {
+        searchViewController()
     }
 }

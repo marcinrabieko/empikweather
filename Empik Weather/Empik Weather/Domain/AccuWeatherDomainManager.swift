@@ -36,9 +36,9 @@ class AccuWeatherDomainManager: AccuWeatherDomainManagerProtocol {
     
     func details(locationId: String) {
         service.details(locationId: locationId)
-            .subscribe { [weak self] cityDetails in
-                self?.cityDetails.accept(cityDetails)
-            }
+            .subscribe(onSuccess: { [weak self] cityDetails in
+                self?.cityDetails.accept(cityDetails.first)
+            })
             .disposed(by: disposeBag)
     }
 }

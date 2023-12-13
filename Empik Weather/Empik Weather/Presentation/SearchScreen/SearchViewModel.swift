@@ -22,21 +22,23 @@ class SearchViewModel {
     let cities: BehaviorRelay<[City]>
     let disposeBag = DisposeBag()
     
-    private let accuWeatherDomainManager: AccuWeatherDomainManager
+    private let coordinator: Coordinator
     
-    init(accuWeatherDomainManager: AccuWeatherDomainManager) {
-        self.accuWeatherDomainManager = accuWeatherDomainManager
-        cities = accuWeatherDomainManager.cities
+    init(coordinator: Coordinator) {
+        self.coordinator = coordinator
+        cities = coordinator.accuWeatherDomainManager.cities
     }
 }
 
 extension SearchViewModel {
     func searchCity(for text: String) {
         print("search text:", text)
-        accuWeatherDomainManager.autocompleteCities(for: text)
+        coordinator.accuWeatherDomainManager.autocompleteCities(for: text)
     }
     
     func showCityWeather(city: City) {
-        print("show city weather:", city.localizedName)
+        print("show city weather:", city.localizedName, " locationKey:", city.key)
+        let locationId = city.key
+        coordinator.showDetails(locationId: locationId)
     }
 }

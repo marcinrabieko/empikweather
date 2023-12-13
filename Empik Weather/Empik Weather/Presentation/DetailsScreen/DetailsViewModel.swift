@@ -27,12 +27,14 @@ class DetailsViewModel {
     init(accuWeatherDomainManager: AccuWeatherDomainManager, locationId: String) {
         self.accuWeatherDomainManager = accuWeatherDomainManager
         cityDetails = accuWeatherDomainManager.cityDetails
+        
+        // Fetch city details, initially
         cityDetails(for: locationId)
     }
 }
 
 extension DetailsViewModel {
-    func cityDetails(for locationId: String) {
+    private func cityDetails(for locationId: String) {
         print("details locationId:", locationId)
         accuWeatherDomainManager.details(locationId: locationId)
     }
